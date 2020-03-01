@@ -1,18 +1,30 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Main {
 
-    public static void metodo1(int x) {
-        int y = 0;
-
-        y = x + 1;
-
-        System.out.println("Valor de y: " + y);
-    }
-
     public static void main(String[] args) {
-        System.out.println("Olá, Mundo!");
+        String nome;
+        int fichas;
+        Scanner sc = new Scanner(System.in);
 
-        metodo1(4);
+        System.out.printf("\nCadastro\n\n");
+        System.out.printf("Digite o seu nome:\t");
+        nome =  sc.nextLine();
+
+        do{
+            System.out.printf("Digite o número de fichas:\t");
+            fichas = sc.nextInt();
+        }while(fichas <= 0);
+
+        Game jogo = new Game(nome, fichas);
+
+        do{
+
+            jogo.fazerAposta();
+
+        }while(jogo.verificarContinuidade());
+        jogo.status();
     }
 }
