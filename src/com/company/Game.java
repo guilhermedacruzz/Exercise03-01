@@ -18,9 +18,9 @@ public class Game {
     public void fazerAposta() {
         int dado1 = new Random().nextInt(6) + 1;
         int dado2 = new Random().nextInt(6) + 1;
-        int aposta, palpite1, palpite2;
+        int aposta, palpite;
 
-        System.out.println("Resultado da Soma dos Dados:    " + (dado1 + dado2));
+        //System.out.println("Resultado da Soma dos Dados:    " + (dado1 + dado2));
         System.out.printf("\nDeseja apostar quantas fichas ?\t");
         do{
             aposta = new Scanner(System.in).nextInt();
@@ -28,19 +28,16 @@ public class Game {
 
         System.out.printf("\nPalpite do resulatdo: \t");
         do{
-            palpite1 = new Scanner(System.in).nextInt();
-        }while(palpite1 < 1 || palpite1 > 6);
+            palpite = new Scanner(System.in).nextInt();
+        }while(palpite < 1);
 
-        do{
-            palpite2 = new Scanner(System.in).nextInt();
-        }while(palpite1 < 1 || palpite1 > 6);
 
-        if((palpite1 == dado1 && palpite2 == dado2) || (palpite1 == dado2 && palpite2 == dado1)){
+        if(palpite == dado1 + dado2){
             System.out.println("Você ganhou a rodada :( +" + (aposta * 2) + " fichas!");
             this.fichas += aposta * 2;
             this.fichasGanhas += 1;
         }
-        else if((Math.abs(palpite1 - dado1) == 1 || Math.abs(palpite1 - dado2) == 1) && (Math.abs(palpite2 - dado1) == 1 || Math.abs(palpite2 - dado2) == 1)) {
+        else if(Math.abs(palpite - dado1 + dado2) == 1) {
             System.out.println("Você quase ganhou a rodada :( +" + (aposta / 2) + " fichas!");
             this.fichas += aposta / 2;
             this.fichasGanhas  += 1;
