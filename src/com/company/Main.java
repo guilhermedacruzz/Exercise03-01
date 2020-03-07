@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         String nome;
         int fichas, aposta, palpite;
-        boolean isRunning = true;
+        char escolha;
         Scanner sc = new Scanner(System.in);
 
         System.out.printf("\nCadastro\n\n");
@@ -39,11 +39,9 @@ public class Main {
             }
 
             System.out.println("Deseja continuar jogando? (S/N)");
-            char escolha = sc.next().charAt(0);
+            escolha = sc.next().charAt(0);
 
-            if(Character.toLowerCase(escolha) == 'n')
-                isRunning = false;
-        }while(isRunning);
+        }while(Character.toLowerCase(escolha) != 'n');
 
         System.out.println(jogo.toString());
     }
